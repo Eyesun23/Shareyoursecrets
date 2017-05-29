@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>POPULAR</title>
+  </head>
+  <body>
+    <div class="container">
+      <a href="secrets" class="right">Back</a>
+      <h1>Most popular secrets.....</h1>
+      {% for secret in secrets %}
+      <p>{{secret.secret}} ({{secret.created_at}}) {{secret.likers.all}} likes
+        {% if secret.author == currentuser %}
+        <a href="delete/{{secret.id}}/pop">Delete</a></p>
+        {% elif currentuser in secret.likers.all %}
+        <strong>You liked this</strong>
+        {% else %}
+        <a href="like/{{secret.id}}/pop">Like</a></p>
+        {% endif %}
+      {% endfor %}
+  </body>
+</html>

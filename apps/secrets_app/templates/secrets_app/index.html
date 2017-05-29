@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration Form</title>
+  
+  </head>
+  <body>
+    <form action="/login" method="post" class = "login">
+      <h2>Login</h2>
+      {% csrf_token %}
+      {% if messages %}
+        {% for message in messages %}
+          <p{% if message.tags %} class="{{ message.tags }}"{% endif %} id = "red">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+      <label for="email"> Email </label>
+      <span style="padding-left:55px"></span>
+      <input type="email" id="email" name="email"> <br><br>
+      <label for="password"> Password </label>
+      <span style="padding-left:30px"></span>
+      <input type="password" id="password" name="password"> <br><br>
+      <input type="submit" name="submit" value="Login">
+    </form>
+      <form action="/register" method="post">
+        <h2>My Registration Form</h2>
+        {% csrf_token %}
+        {% if msgs %}
+          {% for message in msgs %}
+            <p{% if message.tags %} class="{{ message.tags }}"{% endif %} id = "red">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+        <label for="first_name"> First Name: </label>
+        <span style="padding-left:20px"> </span>
+        <input type="text" id="first_name" name="first_name" value=""> <br><br>
+        <label for="last_name"> Last Name: </label>
+        <span style="padding-left:20px"> </span>
+        <input type="text" id="last_name" name="last_name"> <br><br>
+        <label for="email"> Email </label>
+        <span style="padding-left:55px"></span>
+        <input type="email" id="email" name="email"> <br><br>
+        <label for="password"> Password </label>
+        <span style="padding-left:30px"></span>
+        <input type="password" id="password" name="password"> <br><br>
+        <label for="pass_confirm"> Confirm Password </label>
+        <span style="padding-left:10px"></span>
+        <input type="password" id="pass_confirm" name="confirm_password"> <br><br>
+        <input type="submit" name="submit" value="Register">
+      </form>
+  </body>
+</html>
